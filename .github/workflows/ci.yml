@@ -2,7 +2,7 @@ name: CI
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 7 * * *"
   push:
     branches: [ main ]
   pull_request:
@@ -47,3 +47,11 @@ jobs:
         find $HOME/.ivy2/cache                       -name "ivydata-*.properties" -delete || true
         find $HOME/.cache/coursier/v1                -name "ivydata-*.properties" -delete || true
         find $HOME/.sbt                              -name "*.lock"               -delete || true
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        message: "weekly update"
+        add: "src/main/resources"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
