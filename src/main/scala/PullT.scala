@@ -4,7 +4,7 @@ import java.io.{File, InputStream, OutputStream, FileInputStream, FileOutputStre
 import scala.io._
 
 object PullM {
-  final case class Image( copyright: String, startdate: String, enddate: String, url: String)
+  final case class Image(copyright: String, startdate: String, enddate: String, url: String)
 
   final case class Res(images: List[Image])
 }
